@@ -1,0 +1,56 @@
+* {
+    padding: 0;
+    margin: 0;
+    transition: all ease 0.3s;
+}
+
+body {
+    background-color: #03111f;
+    color: #fff;
+    height: 100vh;
+}
+
+.main_nav {
+    border: 1px solid red;
+}
+
+.main_nav .nav_links {
+    display: inline-block;
+}
+
+.hs_cipher_input {
+    padding-bottom: 15px;
+}
+
+.hs_text_box {
+    background-color: transparent;
+    border: 2px solid #000;
+    border-radius: 5px;
+    height: 30px;
+    padding: 0 10px;
+    color: #fff;
+}
+
+.hs_ceasar_cipher {
+    border: 1px solid #FF5F1F;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.hs_cipher_btn {
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #0FFF50;
+    border: 1px solid;
+    border-color: #0fff50;
+}
+
+.hs_decipher {
+    background-color: #FF5F1F;
+    border-color: #FF5F1F;
+}
+
+.hs_cipher_btn:hover {
+    background-color: transparent;
+    color: #fff;
+}

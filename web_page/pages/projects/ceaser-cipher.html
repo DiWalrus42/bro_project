@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./src/js/hs_custom.js"></script>
-    <link rel="stylesheet" href="./src/css/hs_custom.css">
+    <script src="../../src/js/hs_custom.js"></script>
+    <link rel="stylesheet" href="../../src/css/hs_custom.css">
     <title>The Bro Project</title>
 </head>
 
@@ -14,8 +14,11 @@
         <h1 class="temp_title">The Bro Project</h1>
     </header>
     <nav class="main_nav">
-        <li><a href="../../index.html">Home</a></li>
-        <li><a href="../about_us.html">About Us</a></li>
+        <ul class="hs_nav_links">
+            <li><a href="../../index.html">Home</a></li>
+            <li><a href="../projects.html">Projects</a></li>
+            <li><a href="../about_us.html">About Us</a></li>
+        </ul>
     </nav>
     <section class="hs_ceasar_cipher">
         <h2 class="prj_title">Ceasar Cipher</h2>
@@ -25,8 +28,8 @@
                 <input type="text" class="hs_text_box" id="cipher_text" placeholder="Text">
             </div>
             <div class="cipher_btn_container">
-                <button class="hs_cipher_btn" id="btn_cipher" onClick="hs_cipherItOut()">Cipher my Text</button>
-                <button class="hs_cipher_btn" id="btn_cipher" onClick="hs_decipherIt()">What does this mean?</button>
+                <button class="hs_cipher_btn hs_cipher" id="btn_cipher" onClick="hs_cipherItOut()">Cipher my Text</button>
+                <button class="hs_cipher_btn hs_decipher" id="btn_cipher" onClick="hs_decipherIt()">What does this mean?</button>
             </div>
             <div class="hs_cipher_output">
                 <p id="cipher_out" class="hs_cipher_result"></p>
