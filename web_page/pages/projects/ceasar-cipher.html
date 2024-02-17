@@ -24,15 +24,18 @@
         <h2 class="prj_title">Ceasar Cipher</h2>
         <article class="cipher_article">
             <div class="hs_cipher_input">
-                <input type="number" class="hs_text_box" id="cipher_shift" placeholder="Shift">
-                <input type="text" class="hs_text_box" id="cipher_text" placeholder="Text">
-            </div>
-            <div class="cipher_btn_container">
-                <button class="hs_cipher_btn hs_cipher" id="btn_cipher" onClick="hs_cipherItOut()">Cipher my Text</button>
-                <button class="hs_cipher_btn hs_decipher" id="btn_cipher" onClick="hs_decipherIt()">What does this mean?</button>
+                <div class="cipher_actions">
+                    <button id="code_cipher" class="button_group cipher_method" active="true">ENCODE</button>
+                    <button id="decode_cipher" class="button_group cipher_method" active="false">DECODE</button>
+                </div>
+
+                <div class="inputs">
+                    <input onkeyup="ceasar_cipher()" type="number" class="text_box" id="cipher_shift" placeholder="Shift">
+                    <input onkeyup="ceasar_cipher()" type="text" class="text_box" id="cipher_text" placeholder="Text">
+                </div>
             </div>
             <div class="hs_cipher_output">
-                <p id="cipher_out" class="hs_cipher_result"></p>
+                <p id="cipher_out" class="text_box hs_cipher_result"></p>
             </div>
         </article>
     </section>

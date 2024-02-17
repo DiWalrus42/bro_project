@@ -23,13 +23,14 @@ body {
     text-decoration: none;
 }
 
-.hs_text_box {
+.text_box {
     background-color: transparent;
     border: 2px solid #000;
     border-radius: 5px;
     height: 30px;
-    padding: 0 10px;
     color: #fff;
+    padding: 10px;
+    height: 20px;
 }
 
 /* Projects Page */
@@ -69,30 +70,47 @@ body {
 
 /* Ceaser Cipher Project */
 
-.hs_cipher_input {
-    padding-bottom: 15px;
-}
-
 .hs_ceasar_cipher {
+    max-width: 500px;
+    margin: 0 auto;
     border: 1px solid #FF5F1F;
     border-radius: 10px;
     padding: 20px;
 }
 
-.hs_cipher_btn {
-    padding: 5px;
-    border-radius: 5px;
-    background-color: #0FFF50;
-    border: 1px solid;
-    border-color: #0fff50;
+.cipher_actions {
+    padding: 10px 0;
+    margin: 0 auto;
+    width: fit-content;
 }
 
-.hs_decipher {
-    background-color: #FF5F1F;
-    border-color: #FF5F1F;
-}
-
-.hs_cipher_btn:hover {
+.cipher_actions button {
+    border: none;
+    padding: 10px 20px;
     background-color: transparent;
-    color: #fff;
+    color: #353434;
+}
+
+.cipher_actions button[active='true'] {
+    color: #FF5F1F;
+}
+
+.hs_cipher_input {
+    padding-bottom: 15px;
+    width: max;
+}
+
+.inputs input:not(:last-child) {
+    margin-bottom: 15px;
+}
+
+.inputs input {
+    width: calc(100% - 24px);
+}
+
+.hs_cipher_result {
+    border: 2px solid #000;
+    border-radius: 5px;
+    padding: 10px;
+    height: 20px;
 }
