@@ -11,15 +11,16 @@ body {
 }
 
 .main_nav {
-    border: 1px solid red;
+    padding: 10px 20px;
 }
 
-.main_nav .nav_links {
+.hs_nav_links li {
     display: inline-block;
 }
 
-.hs_cipher_input {
-    padding-bottom: 15px;
+.hs_nav_links a {
+    color: #fff;
+    text-decoration: none;
 }
 
 .hs_text_box {
@@ -29,6 +30,47 @@ body {
     height: 30px;
     padding: 0 10px;
     color: #fff;
+}
+
+/* Projects Page */
+
+.projects {
+    padding: 20px;
+}
+
+.project_div {
+    position: relative;
+    max-width: 280px;
+    max-height: 280px;
+}
+
+.project_div a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.project_div img {
+    width: 100%;
+}
+
+.description_container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 0;
+    background-color: rgba(0,0,0,.9);
+    text-align: center;
+}
+
+.project_desc {
+    display: none;
+}
+
+/* Ceaser Cipher Project */
+
+.hs_cipher_input {
+    padding-bottom: 15px;
 }
 
 .hs_ceasar_cipher {
