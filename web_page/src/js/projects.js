@@ -27,7 +27,7 @@ function create_projects(){
         
         // create link for the project
         const _project_link = document.createElement('a');
-        _project_link.href = 'projects/' + item.id;
+        _project_link.href = 'projects/' + item.id + '.html';
 
         //create container for the title and description
         const _description_container = document.createElement('div');
