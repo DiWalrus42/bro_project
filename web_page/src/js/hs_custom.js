@@ -13,54 +13,98 @@ function page_load() {
         });
     });
 
-    //calls the ceasar-cipher on method change
-    document.querySelectorAll(".cipher_method").forEach(function (button) {
-        button.addEventListener('click', function(){ ceasar_cipher(); });
+    //Add event listeners for Cipher triggers
+    //On keyup
+    document.querySelectorAll(".hs_cipher_input .text_box").forEach(function (field) {
+        field.addEventListener('keyup', function () {
+            initialise_cipher();
+        });
+    });
+    //On method change (encode / decode)
+    document.querySelectorAll('.cipher_method').forEach(function(button) {
+        button.addEventListener('click', function() {
+            initialise_cipher();
+        });
     });
 }
 
-// function for the ceasar cipher project
-function ceasar_cipher() {
+// Scripts for Ceaser Cipher Project
 
-    //variable to store the input from the form
-    var _shift = document.getElementById('cipher_shift').value;
-    var _text = document.getElementById('cipher_text').value;
-    
-    //declare the alphabets
-    var _alphabet = 'abcdefghijklmnopqrstuvwxyz'; //the original alphabet
-    var _shifted_alphabet = _alphabet.slice(_shift).concat(_alphabet.slice(0, _shift));
-    
-    //variable to store the output
-    let _result = '';
-    
-    //Check which method is chosen
-    let _chosen_method = document.querySelector('.button_group[active="true"]');
-    
-    if (_chosen_method.id == 'code_cipher') {
-        // Cipher the input text
-        _text.split('').forEach(function (_char, _index) {
-            //make sure the current character is a letter of the alphabet
-            if (_alphabet.includes(_char)) {
-                // use index to swap the letters
-                _result += _shifted_alphabet[_alphabet.indexOf(_char)];
-            } else {
-                _result += _char;
-            }
-        });
-    } else {
-        // Decipher the input text
-        _text.split('').forEach(function (_char, _index) {
-            //make sure the current character is a letter of the alphabet
-            if (_alphabet.includes(_char)) {
-                // use index to swap the letters
-                _result += _alphabet[_shifted_alphabet.indexOf(_char)];
-            } else {
-                _result += _char;
-            }
-        });
+// function to call the ceasar cipher class
+function initialise_cipher() {
+    if (document.getElementById('cipher_shift').value > 26) {
+        document.getElementById('cipher_shift').value = 26;
     }
 
-    // print the result
-    document.getElementById('cipher_out').innerHTML = _result;
+    if (document.getElementById('cipher_shift').value < 0) {
+        document.getElementById('cipher_shift').value = 0;
+    }
 
+    let _text_val = document.getElementById('cipher_text').value;
+    let _shift_val = document.getElementById('cipher_shift').value;
+
+    //call the ceaser-cipher class
+    let _cipher_class = new ceasar_cipher(_text_val, _shift_val);
+    _cipher_class.shift_alphabet();
+}
+
+//Creating the class ceasar-cipher
+class ceasar_cipher {
+
+    constructor(_text, _shift) {
+        this._text = _text;
+        this._shift = _shift;
+    }
+    
+    shift_alphabet() {
+        // Original alphabet
+        let _alphabet = 'abcdefghijklmnopqrstuvwxyz';
+        // Shifting the alphabet based on the shift value
+        let _shifted = _alphabet.slice(this._shift).concat(_alphabet.slice(0, this._shift));
+        //Get the method to use
+        let _method = document.querySelector('.cipher_method[active="true"]').id;
+        if (_method == 'cipher_encode') {
+            this.encode_cipher(_alphabet, _shifted);
+        } else {
+            this.decode_cipher(_alphabet, _shifted);
+        }
+    }
+
+    encode_cipher(_alphabet, _shifted) {
+        let _result = '';
+
+        this._text.split('').forEach(function (_char, _index) {
+            if ((_alphabet).includes(_char)) {
+                //Check if current character is lower cased alphabetic
+                _result += _shifted[_alphabet.indexOf(_char)];
+            } else if (_alphabet.toUpperCase().includes(_char)) {
+                //Check if current character is upper cased alphabetic
+                _result += _shifted[_alphabet.toUpperCase().indexOf(_char)].toUpperCase();
+            } else {
+                //Check if current character is not alphabetic
+                _result += _char;
+            }
+        });
+
+        document.getElementById('cipher_result').innerHTML = _result;
+    }
+
+    decode_cipher(_alphabet, _shifted) {
+        let _result = '';
+
+        this._text.split('').forEach(function (_char, _index) {
+            if (_alphabet.includes(_char)) {
+                //Check if current character is lower cased alphabetic
+                _result += _alphabet[_shifted.indexOf(_char)];
+            } else if (_alphabet.toUpperCase().includes(_char)) {
+                //Check if current character is upper cased alphabetic
+                _result += _alphabet[_shifted.toUpperCase().indexOf(_char)].toUpperCase();
+            } else {
+                //Check if current character is not alphabetic
+                _result += _char;
+            }
+        });
+
+        document.getElementById('cipher_result').innerHTML = _result;
+    }
 }
